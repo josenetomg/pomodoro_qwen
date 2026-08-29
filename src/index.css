@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Bricolage Grotesque", "Instrument Sans", sans-serif;
+  --font-body: "Instrument Sans", system-ui, sans-serif;
+  --font-mono: "Spline Sans Mono", ui-monospace, "SF Mono", monospace;
+
+  --color-ink: #f3ece3;
+  --color-muted: #a2938a;
+  --color-coal: #14100d;
+  --color-panel: #1f1712;
+  --color-panel2: #251b15;
+  --color-gold: #e5b061;
+  --color-focus: #ff6b4a;
+  --color-short: #5fc98e;
+  --color-long: #6ea8e8;
+}
+
+html,
+body {
+  margin: 0;
+  background-color: #14100d;
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--accent, #ff6b4a) 45%, transparent);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.14) transparent;
+}
+
+.grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.14);
+  }
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0.3);
+  }
+  60% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 18px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes grow-y {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.reveal {
+  animation: fade-up 0.7s cubic-bezier(0.22, 0.9, 0.3, 1) both;
+}
+
+.bar-grow {
+  transform-origin: bottom;
+  animation: grow-y 0.9s cubic-bezier(0.22, 0.9, 0.3, 1) both;
+}
+
+.dot-pop {
+  animation: pop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.toast-rise {
+  animation: rise 0.45s cubic-bezier(0.22, 0.9, 0.3, 1) both;
+}
+
+.spin-slower {
+  animation: spin-slow 90s linear infinite;
+}
+
+.breathe {
+  animation: breathe 4.5s ease-in-out infinite;
+}
+
+.pulse-soft {
+  animation: pulse-soft 1.6s ease-in-out infinite;
+}
